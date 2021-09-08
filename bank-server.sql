@@ -19,8 +19,36 @@ VALUES ('Shawn', 'Chicago', 5, 10, 355.80),
 ('Grace', 'Miami', 7, 9100, 34.78),
 ('Hope', 'Phoenix', 4, 10, 50.17);
 
+SELECT * FROM "accounts";
 
 SELECT * FROM "accounts" WHERE "city" = 'Chicago';
+
+SELECT * FROM "accounts" WHERE "username" LIKE '%a%';
+
+/* 
+Testing case sensitivity methods
+
+SELECT * FROM "accounts" WHERE ("username" LIKE '%a%' OR "username" LIKE '%A%');
+
+SELECT LOWER(username) AS LowercaseUsername
+FROM "accounts" WHERE "LowercaseUsername" LIKE '%a%';
+
+*/
+
+SELECT * FROM "accounts" WHERE "transactions_attempted" > 9;
+
+SELECT ("username", "account_balance") FROM "accounts" ORDER BY "account_balance" DESC LIMIT 3;
+
+SELECT ("username", "account_balance") FROM "accounts" ORDER BY "account_balance" ASC LIMIT 3;
+
+SELECT * FROM "accounts" WHERE "account_balance" > 100;
+
+INSERT INTO accounts (username, city, transactions_completed, transactions_attempted, account_balance) VALUES ('Bob', 'Chicago', 6, 10, 1);
+
+DELETE FROM "accounts" WHERE "username" = 'Bob';
+
+DELETE FROM "accounts" WHERE (("city" = 'Miami' OR "city" = 'Phoenix') AND "transactions_completed" < 5);
+
 
 UPDATE "accounts" SET "city" = 'Santa Fe' WHERE "username" = 'Anthony';
 
